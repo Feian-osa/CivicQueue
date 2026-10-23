@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Counter Dashboard</title>
+    <!-- Tailwind CSS Script for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-950 text-gray-100 min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-lg w-full bg-gray-900 border border-gray-800 rounded-xl p-6 shadow-xl space-y-6">
+        <div>
+            <span class="px-2.5 py-1 rounded-md text-xs font-semibold bg-purple-500/10 text-purple-400 border border-purple-500/25">Staff Portal</span>
+            <h1 class="text-xl font-bold text-white mt-2">Counter Management Dashboard</h1>
+            <p class="text-xs text-gray-400 mt-1">Manage queues, call waiting tokens, and complete services.</p>
+        </div>
+
+        <!-- Staff Configuration Form -->
+        <div class="grid grid-cols-2 gap-4">
+            <div>
+                <label class="block text-xs font-medium text-gray-300 mb-1">Counter ID</label>
+                <input type="number" id="counter_id" value="1" class="w-full px-3 py-2 bg-gray-950 border border-gray-800 rounded-lg text-sm text-white focus:outline-none focus:border-purple-500">
+            </div>
+            <div>
+                <label class="block text-xs font-medium text-gray-300 mb-1">Staff ID</label>
+                <input type="number" id="staff_id" value="1" class="w-full px-3 py-2 bg-gray-950 border border-gray-800 rounded-lg text-sm text-white focus:outline-none focus:border-purple-500">
+            </div>
+        </div>
+
+        <div>
+            <label class="block text-xs font-medium text-gray-300 mb-1">Select Service Queue</label>
+            <select id="service_id" class="w-full px-3 py-2 bg-gray-950 border border-gray-800 rounded-lg text-sm text-white focus:outline-none focus:border-purple-500">
+                <option value="">Loading services...</option>
+            </select>
+        </div>
+
+        <!-- Action Button -->
+        <button id="callBtn" class="w-full py-2.5 bg-purple-600 hover:bg-purple-500 text-white font-medium rounded-lg text-sm transition-colors cursor-pointer">
+            Call Next Token (FIFO)
+        </button>
+
+        <!-- Active Token Card (Hidden until a token is called) -->
+        <div id="activeTokenBox" class="hidden p-4 bg-purple-950/30 border border-purple-800/40 rounded-lg space-y-3 text-xs">
+            <div class="flex justify-between items-center">
+                <span class="font-bold text-purple-300 text-sm">Currently Serving</span>
+                <span id="activeStatus" class="px-2 py-0.5 rounded text-[10px] font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">CALLED</span>
+            </div>
+            <div class="space-y-1">
+                <div><strong>Token Number:</strong> <span id="activeTokenNum" class="text-white font-mono text-base font-bold"></span></div>
+                <div><strong>Citizen Name:</strong> <span id="activeCitizenName" class="text-white"></span></div>
+            </div>
+            <button id="completeBtn" class="w-full mt-2 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-medium rounded-lg text-xs transition-colors cursor-pointer">
+                Mark as Completed
+            </button>
+        </div>
+
+        <!-- Status Message Box -->
+        <div id="messageBox" class="hidden p-3 bg-gray-950 border border-gray-800 rounded-lg text-center text-xs text-gray-400"></div>
+    </div>
+
+    <!-- Link to the separate JavaScript file -->
+    <script src="staff.js"></script>
+</body>
+</html>
